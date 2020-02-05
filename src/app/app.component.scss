@@ -1,0 +1,14 @@
+@import 'main.scss';
+
+.app-content {
+  &__wrapper {
+    height: 100vh;
+  }
+  &__header {
+    height: 80px;
+  }
+  &__main-content {
+    background-color: $bg-section-color;
+    height: 100%;
+  }
+}

@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'main';
+
+body {
+  font-size: 1rem;
+  font-family: Roboto, sans-serif;
+  display: block;
+  background-color: $bg-principal-color;
+  padding: 0;
+  margin: 0;
+}
