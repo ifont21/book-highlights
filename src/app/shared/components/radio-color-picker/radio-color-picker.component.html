@@ -1,0 +1,12 @@
+<div class="radio-color-picker__wrapper">
+  <div
+    *ngFor="let color of colors; let i = index"
+    class="radio-color-picker__item"
+    [style.background]="color.value"
+    [class.radio-color-picker--item-labeled]="color.label"
+    [class.radio-color-picker--item-selected]="color.selected"
+    (click)="selectAndUpdateColor(i)"
+  >
+    {{ color.label }}
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.radio-color-picker {
+  &__wrapper {
+    display: flex;
+    color: #fff;
+  }
+
+  &__item {
+    border-radius: 5px;
+    margin-right: 15px;
+    min-width: 3%;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  &--item-labeled {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    width: 5%;
+    justify-content: center;
+  }
+
+  &--item-selected {
+    border: 1px solid #333;
+  }
+}
