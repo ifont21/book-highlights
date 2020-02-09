@@ -1,0 +1,28 @@
+@mixin highlight-colors($highlight-color-map) {
+  @each $name, $value in $highlight-color-map {
+    &.highlight-#{$name} {
+      &::selection {
+        background-color: map-get($value, 'bg-color');
+        color: map-get($value, 'color');
+      }
+    }
+  }
+}
+
+@mixin highlighted-color-options($highlight-color-map) {
+  @each $name, $value in $highlight-color-map {
+    &.highlight-option-#{$name} {
+      background-color: map-get($value, 'bg-color');
+    }
+  }
+}
+
+@mixin highlighted-color-marks($highlight-color-map) {
+  @each $name, $value in $highlight-color-map {
+    .highlight-#{$name} {
+      border-radius: 3px;
+      color: transparent;
+      background-color: map-get($value, 'bg-color');
+    }
+  }
+}

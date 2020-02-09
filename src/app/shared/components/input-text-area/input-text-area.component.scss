@@ -1,0 +1,76 @@
+@import 'main';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.app-text-area {
+  &__wrapper,
+  &__tag,
+  &__backdrop {
+    width: 50%;
+    height: 300px;
+  }
+
+  &__highlights,
+  &__tag {
+    padding: 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: Roboto, sans-serif;
+    line-height: 1.5rem;
+  }
+
+  &__wrapper {
+    display: block;
+    margin: 0 auto;
+    text-size-adjust: none;
+  }
+
+  &__backdrop {
+    position: absolute;
+    z-index: 1;
+    border: 2px solid #685972;
+    background-color: #fff;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+
+    &.perspective {
+      transform: perspective(1500px) translateX(-125px) rotateY(45deg)
+        scale(0.9);
+    }
+  }
+
+  &__highlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+  }
+
+  &--mark {
+    @include highlighted-color-marks($supported-highlight-colors);
+  }
+
+  &__tag {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    border: 2px solid $bg-border-1;
+    background-color: transparent;
+    overflow: auto;
+    resize: none;
+    transition: transform 1s;
+
+    &:focus {
+      outline: none;
+      box-shadow: -7px -2px 37px -8px rgba(0, 0, 0, 0.48);
+    }
+    &.perspective {
+      transform: perspective(1500px) translateX(155px) rotateY(45deg) scale(1.1);
+    }
+  }
+}

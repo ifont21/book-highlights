@@ -1,3 +1,5 @@
+@import 'main';
+
 .radio-color-picker {
   &__wrapper {
     display: flex;
@@ -10,7 +12,9 @@
     min-width: 3%;
     height: 35px;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
+
+    @include highlighted-color-options($supported-highlight-colors);
   }
 
   &--item-labeled {
@@ -22,6 +26,6 @@
   }
 
   &--item-selected {
-    border: 1px solid #333;
+    border: 2px solid #333;
   }
 }

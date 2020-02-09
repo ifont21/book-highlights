@@ -1,0 +1,16 @@
+@import 'colors';
+
+$supported-highlight-colors: (
+  red: (
+    bg-color: $bg-highlight-1,
+    color: $bg-principal-color
+  ),
+  yellow: (
+    bg-color: $bg-highlight-2,
+    color: $font-color-1
+  ),
+  green: (
+    bg-color: $bg-highlight-3,
+    color: $bg-principal-color
+  )
+);

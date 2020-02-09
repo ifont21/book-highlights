@@ -1,7 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SupportedColors } from './../../constants/supported-colors';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 
 interface Color {
   value: string;
+  className?: string;
   label: string;
   selected?: boolean;
 }
@@ -11,26 +20,30 @@ interface Color {
   templateUrl: './radio-color-picker.component.html',
   styleUrls: ['./radio-color-picker.component.scss']
 })
-export class RadioColorPickerComponent {
+export class RadioColorPickerComponent implements OnChanges {
   @Input()
-  set colors(value: Color[]) {
-    this.colorsToUse = value;
-  }
-
-  get colors() {
-    return this.colorsToUse;
-  }
+  colors: Color[];
 
   @Output()
   selected: EventEmitter<any> = new EventEmitter<any>();
 
-  private colorsToUse: Color[] = [
-    { value: '#BC2020', label: '', selected: false },
-    { value: '#348574', label: '', selected: false },
-    { value: '#ECE629', label: '', selected: false }
-  ];
+  get colorsWithClassName() {
+    return this.colorsToUse;
+  }
+
+  private colorsToUse: Color[];
 
   constructor() {}
+
+  ngOnChanges({ colors }: SimpleChanges): void {
+    const currentColor = colors && colors.currentValue;
+
+    if (!currentColor) {
+      return;
+    }
+
+    this.colorsToUse = this.generateColorsWithClassName(currentColor);
+  }
 
   selectAndUpdateColor(index: number): void {
     const colorSelection = this.singleColorSelection(index);
@@ -52,5 +65,12 @@ export class RadioColorPickerComponent {
   private updateSelected(colors: Color[]) {
     const selectedFound = colors.find(color => color.selected);
     this.selected.emit(selectedFound.value);
+  }
+
+  private generateColorsWithClassName(colors: Color[]) {
+    return colors.map(color => ({
+      ...color,
+      className: `highlight-option-${color.value}`
+    }));
   }
 }

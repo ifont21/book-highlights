@@ -1,0 +1,7 @@
+<textarea
+  class="app-text-area__tag"
+  [appHighlighter]="colorHighlights"
+  (selection)="onGettingHighlightsSelection($event)"
+  (scrollTopPosition)="onGettingScrollTopTextArea($event)"
+  [ngClass]="colorHighlights"
+></textarea>  

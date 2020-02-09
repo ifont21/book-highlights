@@ -1,2 +1,7 @@
 @import 'variables';
 @import 'colors';
+@import 'mixins';
+
+textarea {
+  @include highlight-colors($supported-highlight-colors);
+}

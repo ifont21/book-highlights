@@ -1,2 +1,5 @@
-<div>Text Catalogue Here!</div>
-<app-radio-color-picker (selected)="getColorSelected($event)"></app-radio-color-picker>
+<div class="catalogue__wrapper">
+  <app-radio-color-picker [colors]="colors" (selected)="getColorSelected($event)"></app-radio-color-picker>
+
+  <app-text-area-container [colorHighlights]="selectedColor"></app-text-area-container>
+</div>

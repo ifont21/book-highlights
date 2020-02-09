@@ -1,0 +1,14 @@
+<div class="app-text-area__wrapper">
+  <app-backdrop
+    [colorHighlights]="colorHighlights"
+    [highLighterState]="highlightState$ | async"
+    [textAreaScrollTop]="textAreaScrollTop"
+  ></app-backdrop>
+
+  <app-text-area
+    [colorHighlights]="colorHighlights"
+    [highLighterState]="highlightState$ | async"
+    (selection)="onHighlightsSelections($event)"
+    (scrollTop)="onGettingScrollTopTextAre($event)"
+  ></app-text-area>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SupportedColors } from '@app/shared/constants';
+import { HighlightSelection } from '@app/shared/components/directives/highligther.directive';
 
 @Component({
   selector: 'app-catalog',
@@ -7,13 +9,16 @@ import { Component } from '@angular/core';
 })
 export class CatalogComponent {
   colors: any = [
-    { value: '#BC2020', label: 'Careful', selected: false },
-    { value: '#348574', label: 'Warning', selected: false },
-    { value: '#ECE629', label: 'Good', selected: false }
+    { value: SupportedColors.RED, label: 'Careful', selected: false },
+    { value: SupportedColors.YELLOW, label: 'Warning', selected: false },
+    { value: SupportedColors.GREEN, label: 'Good', selected: false }
   ];
+
+  selectedColor: string;
+
   constructor() {}
 
-  getColorSelected(event) {
-    // ...
+  getColorSelected(selected: string) {
+    this.selectedColor = selected;
   }
 }
