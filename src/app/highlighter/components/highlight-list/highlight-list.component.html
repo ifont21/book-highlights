@@ -1,0 +1,6 @@
+<div class="highlights__wrapper">
+  <div *ngFor="let highlight of highlights | highlightFilter: filters" class="highlights__item">
+    <div class="highlights__circle-color" [ngClass]="highlight?.classNameColor"></div>
+    <div class="highlights__text" [ngClass]="highlight?.text">{{ highlight?.text }}</div>
+  </div>
+</div>

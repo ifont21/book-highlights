@@ -4,7 +4,7 @@ import {
   TextArea
 } from './../../services/highlighter.service';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { HighlightSelection } from '../directives/highligther.directive';
+import { HighlightSelection } from '../../directives/highligther.directive';
 
 @Component({
   selector: 'app-text-area',

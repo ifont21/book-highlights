@@ -32,7 +32,7 @@ export class HighlighterService {
 
   constructor() {}
 
-  getState() {
+  getHighlightState() {
     return this.highlightedState$.asObservable();
   }
 

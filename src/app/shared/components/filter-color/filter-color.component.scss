@@ -1,0 +1,30 @@
+@import 'main';
+
+.filter-color {
+  &__wrapper {
+    display: flex;
+    h3{
+        margin-right: 10px;
+    }
+  }
+
+  &__item {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+      opacity: 0.5;
+    }
+
+    @include highlighted-color-options($supported-highlight-colors);
+  }
+
+  &--item-selected {
+    border: 2px solid #333;
+    box-shadow: -7px -2px 37px -8px rgba(0, 0, 0, 0.48);
+  }
+}

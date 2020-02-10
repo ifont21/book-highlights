@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'catalogue',
+    redirectTo: 'highligther',
     pathMatch: 'full'
   },
   {
-    path: 'catalogue',
+    path: 'highligther',
     loadChildren: () =>
-      import('@app/text-catalog/text-catalog.module').then(
-        mod => mod.TextCatalogModule
+      import('@app/highlighter/highlighter.module').then(
+        mod => mod.HighligtherModule
       )
   }
 ];

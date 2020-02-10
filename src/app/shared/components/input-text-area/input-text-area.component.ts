@@ -1,7 +1,8 @@
 import {
   HighLighterState,
   HighlighterService,
-  TextArea
+  TextArea,
+  HighlithedSelection
 } from './../../services/highlighter.service';
 import {
   Component,
@@ -11,7 +12,6 @@ import {
   ViewEncapsulation,
   OnInit
 } from '@angular/core';
-import { HighlightSelection } from '../directives/highligther.directive';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,6 +21,11 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class InputTextAreaComponent implements OnInit {
+  @Output()
+  highlightSelections: EventEmitter<HighlithedSelection[]> = new EventEmitter<
+    HighlithedSelection[]
+  >();
+
   @Input()
   set colorHighlights(color: string) {
     this.highlightColorClassName = color ? `highlight-${color}` : '';
@@ -31,7 +36,6 @@ export class InputTextAreaComponent implements OnInit {
   }
 
   highlightState$: Observable<HighLighterState>;
-
   textAreaScrollTop: number;
 
   private highlightColorClassName: string;
@@ -39,14 +43,19 @@ export class InputTextAreaComponent implements OnInit {
   constructor(private highlighterService: HighlighterService) {}
 
   ngOnInit(): void {
-    this.highlightState$ = this.highlighterService.getState();
+    this.highlightState$ = this.highlighterService.getHighlightState();
   }
 
   onHighlightsSelections(textArea: TextArea) {
     this.highlighterService.updateSelectionState(textArea);
+    this.emitHightlighSelection(textArea.selections);
   }
 
   onGettingScrollTopTextAre(scrollTop: number) {
     this.textAreaScrollTop = scrollTop;
+  }
+
+  private emitHightlighSelection(selections: HighlithedSelection[]) {
+    this.highlightSelections.emit(selections);
   }
 }

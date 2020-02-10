@@ -1,5 +1,26 @@
 <div class="catalogue__wrapper">
-  <app-radio-color-picker [colors]="colors" (selected)="getColorSelected($event)"></app-radio-color-picker>
+  <div class="catalogue__textarea-highlights">
+    <app-radio-color-picker
+      class="catalogue__color-picker"
+      [colors]="colors"
+      (selected)="getColorSelected($event)"
+    ></app-radio-color-picker>
 
-  <app-text-area-container [colorHighlights]="selectedColor"></app-text-area-container>
+    <app-text-area-container
+      class="catalogue__textarea"
+      [colorHighlights]="selectedColor"
+      (highlightSelections)="getSelectionHighlights($event)"
+    ></app-text-area-container>
+  </div>
+
+  <h2 class="catalogue__highlights-title">Selected Highlights</h2>
+
+  <div class="catalogue__highlights">
+    <app-filter-color [colors]="colors"></app-filter-color>
+
+    <div *ngFor="let highlight of currentHighlights" class="catalogue__highlights__item">
+      <div class="catalogue__highlights__circle-color" [ngClass]="highlight?.classNameColor"></div>
+      <div class="catalogue__highlights__text" [ngClass]="highlight?.text">{{ highlight?.text }}</div>
+    </div>
+  </div>
 </div>

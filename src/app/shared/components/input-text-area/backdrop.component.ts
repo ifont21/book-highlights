@@ -1,6 +1,6 @@
 import { HighLighterState } from './../../services/highlighter.service';
 import { Component, Input } from '@angular/core';
-import { HighlightSelection } from '../directives/highligther.directive';
+import { HighlightSelection } from '../../directives/highligther.directive';
 
 @Component({
   selector: 'app-backdrop',

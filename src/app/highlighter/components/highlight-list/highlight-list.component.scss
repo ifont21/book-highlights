@@ -1,0 +1,29 @@
+@import 'main';
+
+.highlights {
+  &__wrapper {
+    display: flex;
+    flex-flow: column;
+    padding: 2%;
+    margin-top: 20px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  &__circle-color {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 3%;
+
+    @include highlighted-color-circle($supported-highlight-colors);
+  }
+
+  &__text {
+    font-weight: 600;
+  }
+}

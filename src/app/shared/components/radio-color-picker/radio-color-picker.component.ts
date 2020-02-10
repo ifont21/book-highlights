@@ -8,7 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 
-interface Color {
+export interface Color {
   value: string;
   className?: string;
   label: string;

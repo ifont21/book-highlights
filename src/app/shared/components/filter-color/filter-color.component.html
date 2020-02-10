@@ -1,0 +1,10 @@
+<div class="filter-color__wrapper">
+  <h3>Filter here</h3>
+  <div
+    [ngClass]="color.className"
+    (click)="selectColorToFilter(i)"
+    *ngFor="let color of colorsWithClassName; let i = index"
+    class="filter-color__item"
+    [class.filter-color--item-selected]="color.selected"
+  ></div>
+</div>

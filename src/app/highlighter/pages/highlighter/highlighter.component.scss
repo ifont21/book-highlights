@@ -1,0 +1,29 @@
+@import 'main';
+
+.highlighter {
+  &__wrapper {
+    width: 100%;
+    h2 {
+      text-align: center;
+    }
+  }
+
+  &__textarea-highlights {
+    display: flex;
+  }
+
+  &__color-picker {
+    flex: 1;
+  }
+
+  &__textarea {
+    flex: 2;
+  }
+
+  &__highlights-title {
+    border-top: 1px solid gray;
+    padding-top: 40px;
+    margin-top: 40px;
+
+  }
+}

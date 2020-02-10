@@ -1,5 +1,54 @@
-.catalogue{
-    &__wrapper{
-        width: 100%;
+@import 'main';
+
+.catalogue {
+  &__wrapper {
+    width: 100%;
+    h2 {
+      text-align: center;
     }
+  }
+
+  &__textarea-highlights {
+    display: flex;
+  }
+
+  &__color-picker {
+    flex: 1;
+  }
+
+  &__textarea {
+    flex: 2;
+  }
+
+  &__highlights-title {
+    border-top: 1px solid gray;
+    padding-top: 40px;
+    margin-top: 40px;
+
+  }
+
+  &__highlights {
+    display: flex;
+    flex-flow: column;
+    padding: 2%;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    &__circle-color {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      margin-right: 3%;
+
+      @include highlighted-color-circle($supported-highlight-colors);
+    }
+
+    &__text {
+      font-weight: 600;
+    }
+  }
 }
