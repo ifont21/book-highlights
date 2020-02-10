@@ -1,15 +1,18 @@
-import { TextAreaService } from './text-area.service';
+import { TextAreaService } from '../services/text-area.service';
 import {
-  HighLighterState,
-  TextArea
-} from './../../services/highlighter.service';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { HighlightSelection } from '../../directives/highligther.directive';
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
+import { TextArea, HighLighterState, Highlight } from '../models';
 
 @Component({
   selector: 'app-text-area',
   templateUrl: './text-area.component.html',
-  providers: [TextAreaService]
+  providers: [TextAreaService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextAreaComponent {
   @Output()
@@ -18,6 +21,9 @@ export class TextAreaComponent {
   @Output()
   scrollTop: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output()
+  changeValue: EventEmitter<string> = new EventEmitter<string>();
+
   @Input()
   colorHighlights: string;
 
@@ -25,17 +31,18 @@ export class TextAreaComponent {
   highLighterState: HighLighterState;
 
   textAreaScrollTop: number;
-  highlightSelection: HighlightSelection;
+  highlightSelection: Highlight;
 
   constructor(private textAreaService: TextAreaService) {}
 
-  onGettingHighlightsSelection(selection: HighlightSelection) {
+  onGettingHighlightsSelection(selection: Highlight) {
     const textArea: TextArea = this.getSelectionMappedIntoTextArea(selection);
 
     const newTextAreaState = this.textAreaService.getHighlightsOnTextArea(
       this.highLighterState,
       textArea
     );
+
     this.emitUpdatedHighlights(newTextAreaState);
   }
 
@@ -43,13 +50,15 @@ export class TextAreaComponent {
     this.scrollTop.emit(scrollTop);
   }
 
+  onTextAreaChange(textValue: string) {
+    this.changeValue.emit(textValue);
+  }
+
   private emitUpdatedHighlights(textAreaHighlights: TextArea) {
     this.selection.emit(textAreaHighlights);
   }
 
-  private getSelectionMappedIntoTextArea(
-    selection: HighlightSelection
-  ): TextArea {
+  private getSelectionMappedIntoTextArea(selection: Highlight): TextArea {
     return {
       currentValue: selection.value,
       currentSelection: {

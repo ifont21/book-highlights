@@ -23,6 +23,13 @@
     line-height: 1.5rem;
   }
 
+  &__actions {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 6.3%;
+  }
+
   &__wrapper {
     display: block;
     text-size-adjust: none;

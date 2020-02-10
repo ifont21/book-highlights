@@ -1,9 +1,8 @@
 import {
-  HighLighterState,
   HighlighterService,
-  TextArea,
-  HighlithedSelection
-} from './../../services/highlighter.service';
+  initialState
+} from './services/highlighter.service';
+import { HighLighterState, TextArea, HighlithedSelection } from './models';
 import {
   Component,
   Input,
@@ -53,6 +52,22 @@ export class InputTextAreaComponent implements OnInit {
 
   onGettingScrollTopTextAre(scrollTop: number) {
     this.textAreaScrollTop = scrollTop;
+  }
+
+  undoTextAreaChange() {
+    this.undoTextAreaValue();
+  }
+
+  onListenTextAreaChange(changes: string) {
+    if (!changes) {
+      this.undoTextAreaValue();
+    }
+  }
+
+  private undoTextAreaValue() {
+    const textAreainitialState = initialState.textArea;
+    this.highlighterService.updateSelectionState(textAreainitialState);
+    this.emitHightlighSelection(textAreainitialState.selections);
   }
 
   private emitHightlighSelection(selections: HighlithedSelection[]) {

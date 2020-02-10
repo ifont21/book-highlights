@@ -1,4 +1,4 @@
-import { HighlithedSelection } from '@app/shared/services/highlighter.service';
+import { HighlithedSelection } from '../models';
 
 interface TrackSelection {
   selectionEnd: number;

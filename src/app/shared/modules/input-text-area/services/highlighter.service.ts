@@ -1,30 +1,12 @@
+import { HighLighterState, TextArea } from '../models/state';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export interface HighlithedSelection {
-  start?: number;
-  end?: number;
-  text?: string;
-  classNameColor?: string;
-}
-
-export interface TextArea {
-  currentValue?: string;
-  selections?: HighlithedSelection[];
-  currentSelection?: HighlithedSelection;
-}
-
-export interface HighLighterState {
-  textArea?: TextArea;
-}
-
-const initialState: HighLighterState = {
+export const initialState: HighLighterState = {
   textArea: { selections: [], currentValue: null, currentSelection: null }
 };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HighlighterService {
   private highlightedState$: BehaviorSubject<
     HighLighterState

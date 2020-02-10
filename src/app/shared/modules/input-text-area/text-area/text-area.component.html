@@ -1,8 +1,10 @@
 <textarea
   class="app-text-area__tag"
+  [appTextArea]="highLighterState"
   [appHighlighter]="colorHighlights"
   (selection)="onGettingHighlightsSelection($event)"
   (scrollTopPosition)="onGettingScrollTopTextArea($event)"
   [ngClass]="colorHighlights"
   placeholder="Copy or type text here"
-></textarea>  
+  (input)="onTextAreaChange($event.target.value)"
+></textarea>

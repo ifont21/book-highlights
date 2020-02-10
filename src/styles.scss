@@ -9,3 +9,21 @@ body {
   margin: 0;
   color: $font-color-1;
 }
+
+.btn {
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.btn-cancel {
+  color: white;
+  background-color: $bg-highlight-1;
+  &:hover {
+    background-color: darken($bg-highlight-1, 10%);
+  }
+}

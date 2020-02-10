@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  HighlithedSelection,
-  HighLighterState,
-  TextArea
-} from '@app/shared/services/highlighter.service';
 import { HighlightParser } from './highlights-parser';
+import { HighLighterState, TextArea, HighlithedSelection } from '../models';
 
 @Injectable()
 export class TextAreaService {

@@ -6,7 +6,7 @@ import {
   SimpleChanges,
   OnChanges
 } from '@angular/core';
-import { Color } from '../radio-color-picker/radio-color-picker.component';
+import { Color } from '@app/shared/modules/input-text-area/models';
 
 @Component({
   selector: 'app-filter-color',
@@ -49,10 +49,6 @@ export class FilterColorComponent implements OnChanges {
     this.selected.emit(selectedColors);
   }
 
-  private initColorSelected(colors: Color[]) {
-    return colors.map(color => ({ ...color, selected: false }));
-  }
-
   private toggleColorSelected(colors: Color[], index: number) {
     return colors.map((color, i) => {
       return index === i ? { ...color, selected: !color.selected } : color;
@@ -75,5 +71,9 @@ export class FilterColorComponent implements OnChanges {
       ...color,
       className: `highlight-option-${color.value}`
     }));
+  }
+
+  private initColorSelected(colors: Color[]) {
+    return colors.map(color => ({ ...color, selected: false }));
   }
 }

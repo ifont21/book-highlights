@@ -6,23 +6,14 @@ import {
   EventEmitter,
   Input
 } from '@angular/core';
-
-export interface HighlightSelection {
-  text: string;
-  value: string;
-  selectionStart: number;
-  selectionEnd: number;
-  colorClassName?: string;
-}
+import { Highlight } from '../models';
 
 @Directive({
   selector: '[appHighlighter]'
 })
 export class HighligtherDirective {
   @Output()
-  selection: EventEmitter<HighlightSelection> = new EventEmitter<
-    HighlightSelection
-  >();
+  selection: EventEmitter<Highlight> = new EventEmitter<Highlight>();
 
   @Output()
   scrollTopPosition: EventEmitter<number> = new EventEmitter<number>();
@@ -34,16 +25,16 @@ export class HighligtherDirective {
 
   @HostListener('mouseup')
   onMouseUp() {
-    this.onHighlighted();
+    this.onHighlightedMouseUp();
   }
 
   @HostListener('scroll', ['$event'])
   onScrolling(event: any) {
     const scrollTop = event && event.target && event.target.scrollTop;
-    this.emitTextAreaScrollPosition(scrollTop);
+    this.onEmitScrollPosition(scrollTop);
   }
 
-  private onHighlighted() {
+  private onHighlightedMouseUp() {
     const textAreaElement = this.elRef && this.elRef.nativeElement;
 
     if (!textAreaElement) {
@@ -56,14 +47,20 @@ export class HighligtherDirective {
       return;
     }
 
-    const changes: HighlightSelection = this.addColorHighlightToChanges(
-      textAreaChanges
-    );
+    const changes: Highlight = this.addColorHighlightToChanges(textAreaChanges);
 
     this.emitTextAreaChanges(changes);
   }
 
-  private getTextAreaValues(domEl: any, windowObj: Window): HighlightSelection {
+  private onEmitScrollPosition(scrollTop: number) {
+    if (!scrollTop) {
+      return;
+    }
+
+    this.scrollTopPosition.emit(scrollTop);
+  }
+
+  private getTextAreaValues(domEl: any, windowObj: Window): Highlight {
     return {
       selectionStart: domEl.selectionStart,
       selectionEnd: domEl.selectionEnd,
@@ -72,24 +69,17 @@ export class HighligtherDirective {
     };
   }
 
-  private emitTextAreaChanges(changes: HighlightSelection) {
+  private emitTextAreaChanges(changes: Highlight) {
     if (!changes) {
       return;
     }
     this.selection.emit(changes);
   }
 
-  private addColorHighlightToChanges(changes: HighlightSelection) {
+  private addColorHighlightToChanges(changes: Highlight) {
     return {
       ...changes,
       colorClassName: this.appHighlighter
     };
-  }
-
-  private emitTextAreaScrollPosition(scrollTop: number) {
-    if (!scrollTop) {
-      return;
-    }
-    this.scrollTopPosition.emit(scrollTop);
   }
 }

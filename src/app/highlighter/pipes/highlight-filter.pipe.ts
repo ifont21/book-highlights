@@ -1,5 +1,5 @@
 import { PipeTransform, Pipe } from '@angular/core';
-import { HighlithedSelection } from '@app/shared/services/highlighter.service';
+import { HighlithedSelection } from '@app/shared/modules/input-text-area/models';
 
 @Pipe({
   name: 'highlightFilter'

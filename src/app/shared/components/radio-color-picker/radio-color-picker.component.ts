@@ -7,13 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-
-export interface Color {
-  value: string;
-  className?: string;
-  label: string;
-  selected?: boolean;
-}
+import { Color } from '@app/shared/modules/input-text-area/models';
 
 @Component({
   selector: 'app-radio-color-picker',

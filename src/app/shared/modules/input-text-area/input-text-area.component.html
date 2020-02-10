@@ -10,5 +10,12 @@
     [highLighterState]="highlightState$ | async"
     (selection)="onHighlightsSelections($event)"
     (scrollTop)="onGettingScrollTopTextAre($event)"
+    (changeValue)="onListenTextAreaChange($event)"
   ></app-text-area>
+</div>
+
+<div class="app-text-area__actions">
+  <button (click)="undoTextAreaChange()" class="app-text-area__undo btn btn-cancel">
+    Undo
+  </button>
 </div>
