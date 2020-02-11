@@ -12,6 +12,9 @@
 @mixin highlighted-color-options($highlight-color-map) {
   @each $name, $value in $highlight-color-map {
     &.highlight-option-#{$name} {
+      &:hover {
+        background-color: darken(map-get($value, 'bg-color'), 6%);
+      }
       background-color: map-get($value, 'bg-color');
     }
   }

@@ -2,12 +2,11 @@
   <div *ngFor="let color of colorsWithClassName; let i = index" class="radio-color-picker__item">
     <div
       [ngClass]="color.className"
-      [class.radio-color-picker--item-labeled]="color.label"
       [class.radio-color-picker--item-selected]="color.selected"
       (click)="selectAndUpdateColor(i)"
-      class="radio-color-picker__block-item"
+      class="radio-color-picker__block-item radio-color-picker--item-labeled"
     >
-      {{ color.label }}
+      Highlighter
     </div>
   </div>
 </div>

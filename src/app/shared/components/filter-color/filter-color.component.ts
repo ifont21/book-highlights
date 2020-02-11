@@ -4,14 +4,16 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
-  OnChanges
+  OnChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Color } from '@app/shared/modules/input-text-area/models';
 
 @Component({
   selector: 'app-filter-color',
   templateUrl: './filter-color.component.html',
-  styleUrls: ['./filter-color.component.scss']
+  styleUrls: ['./filter-color.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterColorComponent implements OnChanges {
   @Input()

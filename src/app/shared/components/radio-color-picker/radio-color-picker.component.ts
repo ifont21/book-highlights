@@ -5,14 +5,16 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Color } from '@app/shared/modules/input-text-area/models';
 
 @Component({
   selector: 'app-radio-color-picker',
   templateUrl: './radio-color-picker.component.html',
-  styleUrls: ['./radio-color-picker.component.scss']
+  styleUrls: ['./radio-color-picker.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RadioColorPickerComponent implements OnChanges {
   @Input()

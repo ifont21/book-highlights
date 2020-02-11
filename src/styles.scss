@@ -4,10 +4,11 @@ body {
   font-size: 1rem;
   font-family: Roboto, sans-serif;
   display: block;
-  background-color: $bg-principal-color;
   padding: 0;
   margin: 0;
   color: $font-color-1;
+  height: 100vh;
+  background-color: $bg-section-color;
 }
 
 .btn {

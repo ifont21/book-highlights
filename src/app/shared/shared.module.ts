@@ -3,6 +3,7 @@ import { RadioColorPickerComponent } from './components/radio-color-picker/radio
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterColorComponent } from './components/filter-color/filter-color.component';
+import { TextAreaService } from './modules/input-text-area/services/text-area.service';
 
 @NgModule({
   imports: [CommonModule, InputTextAreaModule],
@@ -16,6 +17,7 @@ import { FilterColorComponent } from './components/filter-color/filter-color.com
 
     RadioColorPickerComponent,
     FilterColorComponent
-  ]
+  ],
+  providers: [TextAreaService]
 })
 export class SharedModule {}

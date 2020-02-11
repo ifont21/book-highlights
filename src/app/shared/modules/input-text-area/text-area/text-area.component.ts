@@ -11,7 +11,6 @@ import { TextArea, HighLighterState, Highlight } from '../models';
 @Component({
   selector: 'app-text-area',
   templateUrl: './text-area.component.html',
-  providers: [TextAreaService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextAreaComponent {
@@ -59,13 +58,21 @@ export class TextAreaComponent {
   }
 
   private getSelectionMappedIntoTextArea(selection: Highlight): TextArea {
+    const {
+      selectionStart: start,
+      selectionEnd: end,
+      text,
+      colorClassName: classNameColor,
+      value: currentValue
+    } = selection;
+
     return {
-      currentValue: selection.value,
+      currentValue,
       currentSelection: {
-        start: selection.selectionStart,
-        end: selection.selectionEnd,
-        text: selection.text,
-        classNameColor: selection.colorClassName
+        start,
+        end,
+        text,
+        classNameColor
       }
     };
   }

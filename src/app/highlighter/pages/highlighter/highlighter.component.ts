@@ -5,8 +5,7 @@ import { HighlithedSelection } from '@app/shared/modules/input-text-area/models'
 @Component({
   selector: 'app-highligher',
   templateUrl: './highlighter.component.html',
-  styleUrls: ['./highlighter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./highlighter.component.scss']
 })
 export class HighlighterComponent {
   colors: any = [
