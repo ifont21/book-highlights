@@ -80,3 +80,15 @@
     }
   }
 }
+
+@media (max-width: 623px) {
+  .app-text-area {
+    &__wrapper,
+    &__tag,
+    &__backdrop {
+      width: 75%;
+      height: 500px;
+      margin-left: 2%;
+    }
+  }
+}

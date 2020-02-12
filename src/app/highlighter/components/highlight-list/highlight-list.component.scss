@@ -17,7 +17,7 @@
   &__circle-color {
     border-radius: 50%;
     height: 30px;
-    width: 30px;
+    flex-basis: 30px;
     margin-right: 3%;
 
     @include highlighted-color-circle($supported-highlight-colors);
@@ -25,5 +25,14 @@
 
   &__text {
     font-weight: 600;
+    flex-basis: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .highlights {
+    &__item {
+      margin-bottom: 15px;
+    }
   }
 }

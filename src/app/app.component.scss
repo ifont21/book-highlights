@@ -21,3 +21,15 @@
     padding: 5% 10%;
   }
 }
+
+@media (max-width: 420px) {
+  .app-content {
+    &__header {
+      justify-content: center;
+    }
+    &__logo {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  }
+}

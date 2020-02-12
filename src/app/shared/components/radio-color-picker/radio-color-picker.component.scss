@@ -41,3 +41,29 @@
     box-shadow: -7px -2px 37px -8px rgba(0, 0, 0, 0.48);
   }
 }
+
+@media (max-width: 770px) and (min-width: 623px) {
+  .radio-color-picker {
+    &--item-labeled {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 623px) {
+  .radio-color-picker {
+    &__wrapper {
+      flex-flow: row;
+      margin-left: 1%;
+    }
+    &__item {
+      height: 50px;
+    }
+    &__block-item {
+      margin: 0 5px;
+    }
+    &--item-labeled {
+      font-size: 1rem;
+    }
+  }
+}

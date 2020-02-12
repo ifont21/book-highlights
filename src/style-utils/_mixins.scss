@@ -16,6 +16,7 @@
         background-color: darken(map-get($value, 'bg-color'), 6%);
       }
       background-color: map-get($value, 'bg-color');
+      color: map-get($value, 'color');
     }
   }
 }
