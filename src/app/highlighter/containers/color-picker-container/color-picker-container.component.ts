@@ -23,11 +23,8 @@ export class ColorPickerContainerComponent implements OnInit {
   constructor(private storeHighlight: TextHighlightFacadeService) {}
 
   ngOnInit(): void {
-    const selected$ = this.storeHighlight.getSelectedColor();
-
-    this.colorSelected$ = selected$;
-
-    this.initColors$ = this.getInitColor(selected$);
+    this.colorSelected$ = this.storeHighlight.getSelectedColor();
+    this.initColors$ = this.getInitColor(this.colorSelected$);
   }
 
   getColorSelected(selected: string) {

@@ -17,7 +17,8 @@ describe('InputTextAreaComponent', () => {
 
   const highLighertServiceSpy = jasmine.createSpyObj('HighlighterService', {
     getHighlightState: of(mockHighlightState),
-    updateSelectionState: () => {}
+    updateSelectionState: () => {},
+    validateSelections: { highlighted: null }
   });
 
   beforeEach(async(() => {
