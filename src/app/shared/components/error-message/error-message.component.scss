@@ -1,0 +1,15 @@
+@import 'main';
+
+.error-message {
+  &__wrapper {
+    color: $bg-highlight-1;
+  }
+}
+
+@media (max-width: 500px) {
+  .error-message {
+    &__wrapper {
+      margin-left: 6%;
+    }
+  }
+}

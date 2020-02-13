@@ -1,23 +1,15 @@
 <div class="highlighter__wrapper">
   <div class="highlighter__textarea-highlights">
-    <app-radio-color-picker
-      class="highlighter__color-picker"
-      [colors]="colors"
-      (selected)="getColorSelected($event)"
-    ></app-radio-color-picker>
+    <app-color-picker-container class="highlighter__color-picker"></app-color-picker-container>
 
-    <app-text-area-container
-      class="highlighter__textarea"
-      [colorHighlights]="selectedColor"
-      (highlightSelections)="getSelectionHighlights($event)"
-    ></app-text-area-container>
+    <app-text-area-highlight-container class="highlighter__textarea"></app-text-area-highlight-container>
   </div>
 
   <h2 class="highlighter__highlights-title">Selected Highlights</h2>
 
   <div class="highlighter__highlights">
-    <app-filter-color [colors]="colors" (selected)="getColorFilters($event)"></app-filter-color>
+    <app-color-filter-container></app-color-filter-container>
 
-    <app-highlight-list [highlights]="currentHighlights" [filters]="colorFilters"></app-highlight-list>
+    <app-highlight-list-container></app-highlight-list-container>
   </div>
 </div>

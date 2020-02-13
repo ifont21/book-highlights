@@ -4,19 +4,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilterColorComponent } from './components/filter-color/filter-color.component';
 import { TextAreaService } from './modules/input-text-area/services/text-area.service';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 @NgModule({
   imports: [CommonModule, InputTextAreaModule],
   declarations: [
     RadioColorPickerComponent,
-    FilterColorComponent
+    FilterColorComponent,
+    ErrorMessageComponent
   ],
   exports: [
     CommonModule,
     InputTextAreaModule,
 
     RadioColorPickerComponent,
-    FilterColorComponent
+    FilterColorComponent,
+    ErrorMessageComponent
   ],
   providers: [TextAreaService]
 })

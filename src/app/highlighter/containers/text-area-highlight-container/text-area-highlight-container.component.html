@@ -1,0 +1,7 @@
+<app-error-message [errorHighlight]="errorHighlight$ | async"></app-error-message>
+
+<app-text-area-container
+  [colorHighlights]="color$ | async"
+  (highlightSelections)="getSelectionHighlights($event)"
+  (errorHighlight)="getErrorHighlight($event)"
+></app-text-area-container>

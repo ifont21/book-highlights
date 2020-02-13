@@ -1,3 +1,4 @@
+import { TextHighlightStoreModule } from './store/text-highlight.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
@@ -9,7 +10,7 @@ import { RouteModule } from './app.route';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}),
+    TextHighlightStoreModule,
 
     RouteModule
   ],

@@ -81,6 +81,14 @@
   }
 }
 
+@media (max-width: 640px) {
+  .app-text-area {
+    &__actions {
+      padding: 5px 2.3%;
+    }
+  }
+}
+
 @media (max-width: 623px) {
   .app-text-area {
     &__wrapper,
@@ -89,6 +97,17 @@
       width: 75%;
       height: 500px;
       margin-left: 2%;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .app-text-area {
+    &__actions {
+      button {
+        width: 97%;
+        margin-top: 10px;
+      }
     }
   }
 }

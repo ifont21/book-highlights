@@ -1,6 +1,7 @@
 import {
   HighlighterService,
-  initialState
+  initialState,
+  ErrorHighlight
 } from './services/highlighter.service';
 import { HighLighterState, TextArea, HighlithedSelection } from './models';
 import {
@@ -25,6 +26,11 @@ export class InputTextAreaComponent implements OnInit {
     HighlithedSelection[]
   >();
 
+  @Output()
+  errorHighlight: EventEmitter<ErrorHighlight> = new EventEmitter<
+    ErrorHighlight
+  >();
+
   @Input()
   set colorHighlights(color: string) {
     this.highlightColorClassName = color ? `highlight-${color}` : '';
@@ -46,6 +52,12 @@ export class InputTextAreaComponent implements OnInit {
   }
 
   onHighlightsSelections(textArea: TextArea) {
+    const errorHighlight = this.highlighterService.validateSelections(textArea);
+
+    if (errorHighlight.highlighted) {
+      this.errorHighlight.emit(errorHighlight);
+      return;
+    }
     this.highlighterService.updateSelectionState(textArea);
     this.emitHightlighSelection(textArea.selections);
   }
