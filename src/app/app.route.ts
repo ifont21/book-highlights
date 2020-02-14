@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'highligther',
+    redirectTo: 'highlighter',
     pathMatch: 'full'
   },
   {
-    path: 'highligther',
+    path: 'highlighter',
     loadChildren: () =>
       import('@app/highlighter/highlighter.module').then(
         mod => mod.HighligtherModule

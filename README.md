@@ -2,10 +2,13 @@
 
 **Tech Stack**
 
- - Angular v8
+ -  Angular v8
  -  RxJS
- - CSS (Sass)
- - Typescript
+ -  CSS (Sass)
+ -  Typescript
+ -  NgRx/store 
+ -  Jasmine (Unit Test)
+ -  Cypress (Integration Test)
  
 **Installation**
   
@@ -23,6 +26,12 @@ git clone https://github.com/ifont21/book-highlights.git
  2. *npm run test:watch* -> to run tests and keep an eye on them
  3. *npm run open:coverage*-> to visualize code coverage after running tests
  4. *npm run lint* -> to validate rules code
+ 5. *npm run int:test* -> to run integration test
+ 5. *npm run int:test:browser* -> to run integration test showing the browser
+
+ **Note**: I needed to run integration test using sudo. Cypress installation got some issues maybe related with permissions so if sudo doesn't work for just simple install dependencies please run like this
+
+ `npm install --unsafe-perm`
 
 **Usage**
 
@@ -33,7 +42,9 @@ There is only one screen to navigate where you can find 3 sections
  - TextArea to Highlight words or phrases.
  - a List of highlights that were added when you highlight on the TextArea
  - a Filter Feature to filter by colors you've highlighted with ( if you select one color you'll see one color, if you select two colors you'll see two colors and if you select all of three or none of them you will get the whole list )
- - an Undo button which reset your textArea value to start again if you desire it.
+ - a Reset button which clean up your textArea value to start again if you desire it.
+ - a Constraint to avoid overlapping highlights, when this thing ocurres it shows an error message
+ - Responsive UI -> you can resize the browser and see how this respond.
  
 **Project Definition**
 
@@ -51,12 +62,7 @@ Because is made to solve problems where the application state is really huge tha
 ***Services***
 Services here have taken the Responsibility to handle the most of logic taking advantage of the *Dependency Injection* and that's how we achieve one the most important principles in the Software Engineering called **SOLID**.
 
-**What was missing here?**
-
-I started this challenge wanting to do a lot of things thinking as a Frontend Architect or a Software designer but I couldn't make it. So these were some of topics I would've liked to include 
-
- - Store Data ( Using a LocalStorage or in a API )
- - Create Custom controls using Control Value Accesor to handle the Text Area and components such as *Filters* and *Radio Color Picker*
- - Create a book catalogue where you can add a piece of your favorite book and highlight all of those phrases you like.
+***Store***
+A store was included to handle the application state, so basically you can dispatch actions like select a color to highlight, set filters, set an error, update highlights, get all information about that state. At least but not last this fit perfect to use containers and components since the containers are those that are dealing with the application state.
 
  
